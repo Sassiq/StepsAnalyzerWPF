@@ -1,4 +1,5 @@
 ﻿using StepsAnalyzer.ViewModels;
+using StepsAnalyzer.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -25,7 +26,7 @@ namespace StepsAnalyzer
         {
             InitializeComponent();
 
-            DataContext = new UsersViewModel();
+            //DataContext = new UsersViewModel();
         }
     }
 }

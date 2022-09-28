@@ -28,6 +28,17 @@ namespace StepsAnalyzer.ViewModels
         public UsersViewModel()
         {
             Users = new ObservableCollection<User>();
+            User user = new User();
+            user.Name = "Stas";
+            user.Days.Add(new Day() { Number = 1, Status = Status.Finished, UserRank = 1, UserSteps = 10000 });
+            Users.Add(user);
+            Users.Add(user);
+
+            User user1 = new User();
+            user1.Name = "Who";
+            user1.Days.Add(new Day() { Number = 3, Status = Status.Finished, UserRank = 2, UserSteps = 4021 });
+            Users.Add(user1);
+            selectedUser = user;
         }
 
         public event PropertyChangedEventHandler? PropertyChanged;

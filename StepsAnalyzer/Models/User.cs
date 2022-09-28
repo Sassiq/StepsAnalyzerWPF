@@ -13,7 +13,10 @@ namespace StepsAnalyzer.Models
     {
         private string name;
         private uint averageSteps;
-        public readonly ObservableCollection<Day> Days;
+        private uint bestStepsResult;
+        private uint worstStepsResult;
+
+        public ObservableCollection<Day> Days { get; }
 
         public string Name
         {
@@ -30,7 +33,19 @@ namespace StepsAnalyzer.Models
             get => averageSteps;
             private set => averageSteps = value;
         }
-        
+
+        public uint BestStepsResult
+        {
+            get => bestStepsResult;
+            private set => bestStepsResult = value;
+        }
+
+        public uint WorstStepsResult
+        {
+            get => worstStepsResult;
+            private set => worstStepsResult = value;
+        }
+
         public User()
         {
             Days = new ObservableCollection<Day>();
@@ -38,6 +53,8 @@ namespace StepsAnalyzer.Models
             {
                 OnPropertyChanged("Days");
                 CalculateAverageSteps();
+                CalculateBestStepsResult();
+                CalculateWorstStepsResult();
             };
         }
 
@@ -52,6 +69,18 @@ namespace StepsAnalyzer.Models
         {
             this.AverageSteps = (uint)Days.Average(day => day.UserSteps);
             OnPropertyChanged("AverageSteps");
+        }
+
+        private void CalculateBestStepsResult()
+        {
+            this.BestStepsResult = (uint)Days.Max(day => day.UserSteps);
+            OnPropertyChanged("BestStepsResult");
+        }
+
+        private void CalculateWorstStepsResult()
+        {
+            this.WorstStepsResult = (uint)Days.Min(day => day.UserSteps);
+            OnPropertyChanged("WorstStepsResult");
         }
     }
 }
