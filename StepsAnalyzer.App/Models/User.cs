@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace StepsAnalyzer.Models
 {
-    public class User
+    internal class User : INotifyPropertyChanged
     {
         private string name;
         private uint averageSteps;
@@ -25,7 +25,7 @@ namespace StepsAnalyzer.Models
             {
                 name = value;
                 OnPropertyChanged("Name");
-            }
+            } 
         }
 
         public uint AverageSteps
@@ -49,7 +49,7 @@ namespace StepsAnalyzer.Models
         public User()
         {
             Days = new ObservableCollection<Day>();
-            Days.CollectionChanged += (_, _) =>
+            Days.CollectionChanged += (_, _) => 
             {
                 OnPropertyChanged("Days");
                 CalculateAverageSteps();

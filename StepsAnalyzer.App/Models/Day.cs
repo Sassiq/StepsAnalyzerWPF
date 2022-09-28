@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace StepsAnalyzer.Models
 {
-    public class Day
+    internal class Day
     {
         public uint Number { get; init; }
         public uint UserRank { get; init; }
@@ -14,7 +14,7 @@ namespace StepsAnalyzer.Models
         public Status Status { get; init; }
     }
 
-    public enum Status
+    internal enum Status
     {
         Finished,
         InProgress,
