@@ -1,9 +1,10 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>net6.0</TargetFramework>
-    <ImplicitUsings>enable</ImplicitUsings>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net6.0-windows</TargetFramework>
     <Nullable>enable</Nullable>
+    <UseWPF>true</UseWPF>
   </PropertyGroup>
 
   <ItemGroup>
@@ -13,7 +14,6 @@
 
   <ItemGroup>
     <ProjectReference Include="..\StepsAnalyzer\StepsAnalyzer.csproj" />
-    <ProjectReference Include="..\StepsAnalyzer.ViewModels\StepsAnalyzer.ViewModels.csproj" />
     <ProjectReference Include="..\UserDeserializer\UserDeserializer.csproj" />
     <ProjectReference Include="..\UserXmlSerializer\UserXmlSerializer.csproj" />
   </ItemGroup>

@@ -1,5 +1,6 @@
 ﻿using StepsAnalyzer.Interfaces;
 using StepsAnalyzer.Models;
+using StepsAnalyzer.Presentation.Commands;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -9,14 +10,37 @@ using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace StepsAnalyzer.ViewModels
+namespace StepsAnalyzer.Presentation.ViewModels
 {
     public class UsersViewModel : INotifyPropertyChanged
     {
-        private User selectedUser;
+        private User? selectedUser;
+        private RelayCommand saveCommand;
+        private IUserSerializer serializer;
+        private IDialogService dialogService;
+
         public ObservableCollection<User> Users { get; }
 
-        public User SelectedUser
+        public RelayCommand SaveCommand
+        {
+            get => new RelayCommand(obj =>
+            {
+                try
+                {
+                    if (dialogService.SaveFileDialog())
+                    {
+                        serializer.Serialize(Users, dialogService.FilePath);
+                        dialogService.ShowMessage("Successfully saved.");
+                    }
+                }
+                catch (Exception e)
+                {
+                    dialogService.ShowMessage(e.Message);
+                }
+            });
+        }
+
+        public User? SelectedUser
         {
             get => selectedUser;
             set
@@ -26,7 +50,7 @@ namespace StepsAnalyzer.ViewModels
             }
         }
 
-        public UsersViewModel(IUserDeserializer deserializer, IUserSerializer serializer)
+        public UsersViewModel(IUserDeserializer deserializer, IUserSerializer serializer, IDialogService dialogService)
         {
             if (deserializer is null)
             {
@@ -38,6 +62,13 @@ namespace StepsAnalyzer.ViewModels
                 throw new ArgumentNullException(nameof(serializer));
             }
 
+            if (dialogService is null)
+            {
+                throw new ArgumentNullException(nameof(dialogService));
+            }
+
+            this.serializer = serializer;
+            this.dialogService = dialogService;
             Users = new ObservableCollection<User>(deserializer.GetUsers());
         }
 

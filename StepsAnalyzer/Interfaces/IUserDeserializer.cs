@@ -9,6 +9,6 @@ namespace StepsAnalyzer.Interfaces
 {
     public interface IUserDeserializer
     {
-        public IEnumerable<User> GetUsers();
+        IEnumerable<User> GetUsers();
     }
 }

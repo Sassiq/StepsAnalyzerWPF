@@ -9,6 +9,6 @@ namespace StepsAnalyzer.Interfaces
 {
     public interface IUserSerializer
     {
-        public void Serialize(IEnumerable<User> users, string path);
+        void Serialize(IEnumerable<User> users, string path);
     }
 }

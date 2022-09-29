@@ -1,5 +1,4 @@
-﻿//using StepsAnalyzer.ViewModel;
-using StepsAnalyzer.Models;
+﻿using StepsAnalyzer.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,11 +13,10 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-using DependencyResolver;
-using StepsAnalyzer.ViewModels;
+using StepsAnalyzer.Presentation.ViewModels;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace StepsAnalyzer
+namespace StepsAnalyzer.Presentation
 {
     /// <summary>
     /// Interaction logic for MainWindow.xaml
@@ -31,7 +29,6 @@ namespace StepsAnalyzer
 
             var provider = new ResolverConfig().CreateServiceProvider();
             DataContext = provider.GetService<UsersViewModel>();
-            //DataContext = new UsersViewModel();
         }
     }
 }
