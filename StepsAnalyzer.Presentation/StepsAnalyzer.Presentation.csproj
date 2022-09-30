@@ -15,6 +15,7 @@
   <ItemGroup>
     <ProjectReference Include="..\StepsAnalyzer\StepsAnalyzer.csproj" />
     <ProjectReference Include="..\UserDeserializer\UserDeserializer.csproj" />
+    <ProjectReference Include="..\UserJsonSerializer\UserJsonSerializer.csproj" />
     <ProjectReference Include="..\UserXmlSerializer\UserXmlSerializer.csproj" />
   </ItemGroup>
 

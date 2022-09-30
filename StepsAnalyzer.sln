@@ -11,6 +11,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UserXmlSerializer", "UserXm
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UserDeserializer", "UserDeserializer\UserDeserializer.csproj", "{CAD82CD8-1CBB-41D8-B2D1-9AECB62AE2BA}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UserJsonSerializer", "UserJsonSerializer\UserJsonSerializer.csproj", "{C722B35E-C099-4614-B9F9-10D5AC030EED}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +35,10 @@ Global
 		{CAD82CD8-1CBB-41D8-B2D1-9AECB62AE2BA}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{CAD82CD8-1CBB-41D8-B2D1-9AECB62AE2BA}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{CAD82CD8-1CBB-41D8-B2D1-9AECB62AE2BA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C722B35E-C099-4614-B9F9-10D5AC030EED}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C722B35E-C099-4614-B9F9-10D5AC030EED}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C722B35E-C099-4614-B9F9-10D5AC030EED}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C722B35E-C099-4614-B9F9-10D5AC030EED}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

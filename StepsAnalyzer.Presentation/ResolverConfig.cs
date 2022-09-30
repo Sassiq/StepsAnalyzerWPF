@@ -11,6 +11,7 @@ using System.Text;
 using System.Threading.Tasks;
 using UserDeserializer;
 using UserXmlSerializer;
+using UserJsonSerializer;
 
 namespace StepsAnalyzer.Presentation
 {
@@ -33,6 +34,12 @@ namespace StepsAnalyzer.Presentation
             {
                 "XML" => new ServiceCollection()
                     .AddTransient<IUserSerializer, UserXMLSerializer>()
+                    .AddTransient<IUserDeserializer>(d => new StandardUserDeserializer(this.ConfigurationRoot["deserializationPath"]))
+                    .AddTransient<IDialogService, DialogService>()
+                    .AddTransient<UsersViewModel>()
+                    .BuildServiceProvider(),
+                "JSON" => new ServiceCollection()
+                    .AddTransient<IUserSerializer, UserJSONSerializer>()
                     .AddTransient<IUserDeserializer>(d => new StandardUserDeserializer(this.ConfigurationRoot["deserializationPath"]))
                     .AddTransient<IDialogService, DialogService>()
                     .AddTransient<UsersViewModel>()
