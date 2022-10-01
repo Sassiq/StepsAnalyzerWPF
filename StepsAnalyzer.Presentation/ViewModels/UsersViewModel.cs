@@ -9,6 +9,7 @@ using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Media;
 
 namespace StepsAnalyzer.Presentation.ViewModels
 {
@@ -23,21 +24,22 @@ namespace StepsAnalyzer.Presentation.ViewModels
 
         public RelayCommand SaveCommand
         {
-            get => new RelayCommand(obj =>
-            {
-                try
+            get => saveCommand ??
+                (saveCommand = new RelayCommand(obj =>
                 {
-                    if (dialogService.SaveFileDialog())
+                    try
                     {
-                        serializer.Serialize(Users, dialogService.FilePath);
-                        dialogService.ShowMessage("Successfully saved.");
+                        if (dialogService.SaveFileDialog())
+                        {
+                            serializer.Serialize(Users, dialogService.FilePath);
+                            dialogService.ShowMessage("Successfully saved.");
+                        }
                     }
-                }
-                catch (Exception e)
-                {
-                    dialogService.ShowMessage(e.Message);
-                }
-            });
+                    catch (Exception e)
+                    {
+                        dialogService.ShowMessage(e.Message);
+                    }
+                }));
         }
 
         public User? SelectedUser

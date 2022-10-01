@@ -33,13 +33,24 @@
 
         <DataGrid Grid.Row="1" Grid.Column="0"  ItemsSource="{Binding Users}"
                  SelectedItem="{Binding SelectedUser}"
-                 SelectedIndex="0" AutoGenerateColumns="False">
+                 SelectedIndex="0" AutoGenerateColumns="False"
+                 CanUserAddRows="False">
             <DataGrid.Columns>
-                <DataGridTextColumn Header="Name" Binding="{Binding Path=Name}" />
-                <DataGridTextColumn Header="AverageSteps" Binding="{Binding Path=AverageSteps}" />
-                <DataGridTextColumn Header="BestStepsResult" Binding="{Binding Path=BestStepsResult}" />
-                <DataGridTextColumn Header="WorstStepsResult" Binding="{Binding Path=WorstStepsResult}" />
+                <DataGridTextColumn Header="Name" Binding="{Binding Path=Name, Mode=OneWay}" />
+                <DataGridTextColumn Header="Average Steps" Binding="{Binding Path=AverageSteps, Mode=OneWay}" />
+                <DataGridTextColumn Header="Best Result" Binding="{Binding Path=BestStepsResult, Mode=OneWay}" />
+                <DataGridTextColumn Header="Worst Result" Binding="{Binding Path=WorstStepsResult, Mode=OneWay}" Width="*" />
             </DataGrid.Columns>
+
+            <DataGrid.RowStyle>
+                <Style TargetType="DataGridRow">
+                    <Style.Triggers>
+                        <DataTrigger Binding="{Binding Name}" Value="Липатов Александр">
+                            <Setter Property="Background" Value="Red" />
+                        </DataTrigger>
+                    </Style.Triggers>
+                </Style>
+            </DataGrid.RowStyle>
         </DataGrid>
 
 
