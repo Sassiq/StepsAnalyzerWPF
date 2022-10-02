@@ -31,19 +31,36 @@ namespace StepsAnalyzer.Models
         public uint AverageSteps
         {
             get => averageSteps;
-            private set => averageSteps = value;
+            private set
+            {
+                averageSteps = value;
+                OnPropertyChanged("AverageSteps");
+            }
         }
 
         public uint BestStepsResult
         {
             get => bestStepsResult;
-            private set => bestStepsResult = value;
+            private set
+            {
+                bestStepsResult = value;
+                OnPropertyChanged("BestStepsResult");
+            }
         }
 
         public uint WorstStepsResult
         {
             get => worstStepsResult;
-            private set => worstStepsResult = value;
+            private set
+            {
+                worstStepsResult = value;
+                OnPropertyChanged("WorstStepsResult");
+            }
+        }
+
+        public bool IsStable
+        {
+            get => AverageSteps * 0.8 > WorstStepsResult || AverageSteps * 1.2 < BestStepsResult;
         }
 
         public User()
@@ -68,19 +85,16 @@ namespace StepsAnalyzer.Models
         private void CalculateAverageSteps()
         {
             this.AverageSteps = (uint)Days.Average(day => day.UserSteps);
-            OnPropertyChanged("AverageSteps");
         }
 
         private void CalculateBestStepsResult()
         {
             this.BestStepsResult = (uint)Days.Max(day => day.UserSteps);
-            OnPropertyChanged("BestStepsResult");
         }
 
         private void CalculateWorstStepsResult()
         {
             this.WorstStepsResult = (uint)Days.Min(day => day.UserSteps);
-            OnPropertyChanged("WorstStepsResult");
         }
     }
 }

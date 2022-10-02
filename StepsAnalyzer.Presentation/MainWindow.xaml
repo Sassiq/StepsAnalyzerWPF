@@ -3,6 +3,7 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:custom="clr-namespace:CustomControls;assembly=CustomControls"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
     <Window.Resources>
@@ -14,7 +15,6 @@
         </Style>
     </Window.Resources>
 
-    
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*" />
@@ -45,7 +45,7 @@
             <DataGrid.RowStyle>
                 <Style TargetType="DataGridRow">
                     <Style.Triggers>
-                        <DataTrigger Binding="{Binding Name}" Value="Липатов Александр">
+                        <DataTrigger Binding="{Binding IsStable}" Value="true">
                             <Setter Property="Background" Value="Red" />
                         </DataTrigger>
                     </Style.Triggers>
@@ -53,16 +53,6 @@
             </DataGrid.RowStyle>
         </DataGrid>
 
-
-        <ListBox Grid.Column="1" Grid.RowSpan="2" ItemsSource="{Binding SelectedUser.Days}">
-            <ListBox.ItemTemplate>
-                <DataTemplate>
-                    <StackPanel Margin="5">
-                        <TextBlock FontSize="18" Text="{Binding Path=Number}" />
-                    </StackPanel>
-                </DataTemplate>
-            </ListBox.ItemTemplate>
-        </ListBox>
-
+        <custom:CustomPlot Grid.Column="1" Grid.RowSpan="2" User="{Binding SelectedUser}" />
     </Grid>
 </Window>
