@@ -1,8 +1,6 @@
 ﻿using StepsAnalyzer.Interfaces;
 using StepsAnalyzer.Models;
-using System.Globalization;
 using System.Xml;
-using System.Xml.Serialization;
 
 namespace UserXmlSerializer
 {

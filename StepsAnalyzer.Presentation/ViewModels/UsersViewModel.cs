@@ -2,14 +2,9 @@
 using StepsAnalyzer.Models;
 using StepsAnalyzer.Presentation.Commands;
 using System;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
-using System.Linq;
 using System.Runtime.CompilerServices;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Media;
 
 namespace StepsAnalyzer.Presentation.ViewModels
 {
@@ -17,15 +12,14 @@ namespace StepsAnalyzer.Presentation.ViewModels
     {
         private User? selectedUser;
         private RelayCommand saveCommand;
-        private IUserSerializer serializer;
-        private IDialogService dialogService;
+        private readonly IUserSerializer serializer;
+        private readonly IDialogService dialogService;
 
         public ObservableCollection<User> Users { get; }
 
         public RelayCommand SaveCommand
         {
-            get => saveCommand ??
-                (saveCommand = new RelayCommand(obj =>
+            get => saveCommand ??= new RelayCommand(obj =>
                 {
                     try
                     {
@@ -39,7 +33,7 @@ namespace StepsAnalyzer.Presentation.ViewModels
                     {
                         dialogService.ShowMessage(e.Message);
                     }
-                }));
+                });
         }
 
         public User? SelectedUser

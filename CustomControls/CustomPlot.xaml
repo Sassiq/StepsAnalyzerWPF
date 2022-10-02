@@ -8,7 +8,6 @@
              d:DesignHeight="450" d:DesignWidth="800"
              Name="customPlot">
     <StackPanel>
-        <TextBlock Text="{Binding ElementName=customPlot, Path=User.Name}" Height="30"></TextBlock>
-        <WpfPlot Name="Plot"></WpfPlot>
+        <WpfPlot Name="Plot" MaxHeight="900" VerticalAlignment="Center" HorizontalAlignment="Center" />
     </StackPanel>
 </UserControl>

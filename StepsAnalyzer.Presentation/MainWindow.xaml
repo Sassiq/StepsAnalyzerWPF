@@ -5,20 +5,12 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:custom="clr-namespace:CustomControls;assembly=CustomControls"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
-    <Window.Resources>
-        <Style TargetType="TextBlock">
-            <Setter Property="FontSize" Value="14" />
-        </Style>
-        <Style TargetType="TextBox">
-            <Setter Property="FontSize" Value="14" />
-        </Style>
-    </Window.Resources>
+        Title="Steps Analyzer" Height="450" Width="800">
 
     <Grid>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="*" />
-            <ColumnDefinition Width="0.8*" />
+            <ColumnDefinition Width="400"/>
+            <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
             <RowDefinition Height="25" />
@@ -26,7 +18,7 @@
         </Grid.RowDefinitions>
 
         <Menu Grid.Row="0" Grid.Column="0" >
-            <MenuItem Header="File">
+            <MenuItem Header="File" FontSize="14">
                 <MenuItem Header="Save" Command="{Binding SaveCommand}" />
             </MenuItem>
         </Menu>
@@ -34,13 +26,20 @@
         <DataGrid Grid.Row="1" Grid.Column="0"  ItemsSource="{Binding Users}"
                  SelectedItem="{Binding SelectedUser}"
                  SelectedIndex="0" AutoGenerateColumns="False"
-                 CanUserAddRows="False">
+                 CanUserAddRows="False" SelectionMode="Single">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Name" Binding="{Binding Path=Name, Mode=OneWay}" />
                 <DataGridTextColumn Header="Average Steps" Binding="{Binding Path=AverageSteps, Mode=OneWay}" />
                 <DataGridTextColumn Header="Best Result" Binding="{Binding Path=BestStepsResult, Mode=OneWay}" />
                 <DataGridTextColumn Header="Worst Result" Binding="{Binding Path=WorstStepsResult, Mode=OneWay}" Width="*" />
             </DataGrid.Columns>
+
+            <DataGrid.ColumnHeaderStyle>
+                <Style TargetType="DataGridColumnHeader">
+                    <Setter Property="FontSize" Value="12"></Setter>
+                    <Setter Property="HorizontalContentAlignment" Value="Center" />
+                </Style>
+            </DataGrid.ColumnHeaderStyle>
 
             <DataGrid.RowStyle>
                 <Style TargetType="DataGridRow">
